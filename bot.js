@@ -2,6 +2,7 @@
 const { Telegraf } = require('telegraf')
 //Servidor
 require("./server");
+require("dotenv").config();
 
 //Covid Api 
 //Api: https://rapidapi.com/es/Gramzivi/api/covid-19-data/
@@ -20,7 +21,7 @@ var options = {
 
 
 // Instancia de bot 
-const bot = new Telegraf('1713876666:AAFVXnEuEMOePMLYeOXXDsFITEIRdjTATFc')
+const bot = new Telegraf(process.env.BOT_TOKEN)
 
 //Funciones support
 function random(min, max) {

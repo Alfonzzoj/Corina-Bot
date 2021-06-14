@@ -1,5 +1,7 @@
 var express = require("express");
 var packageInfo = require("./package.json");
+require("dotenv").config();
+
 // Instancia de express de la app en node
 var app = express();
 
