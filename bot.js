@@ -43,7 +43,7 @@ bot.help((ctx) => {
 
 //Bot comparte su link 
 bot.command(['link', 'Link', 'share', 'Share'], (ctx) => {
-    ctx.reply('Puedes compartirme utilizando este link ');
+    ctx.reply('Puedes compartirme utilizando este link http://t.me/Cocorina_bot');
 })
 //Bot escribe numero total 
 bot.command(['Total', 'total'], (ctx) => {
