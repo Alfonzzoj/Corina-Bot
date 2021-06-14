@@ -201,7 +201,7 @@ bot.on('message', (msg) => {
 
     }
     //como estas
-    else if (escucharMsg(respuesta, "que puedes hacer")) {
+    else if (escucharMsg(respuesta, "como estas")) {
         bot.sendMessage(chatId, randomElementOfArray(answers.comoEstas))
 
         //Que puedes hacer
