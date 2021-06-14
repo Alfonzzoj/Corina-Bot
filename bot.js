@@ -34,11 +34,31 @@ function random(min, max) {
 // =============C O M A N D O S =============
 //Comando de inicio saluda 
 bot.start((ctx) => {
-    ctx.reply('Hola puedo ayudarte a saber mas del covid ')
+    var mensaje = `***Mis comandos disponibles son:*** 
+    - **Basicos**
+     1. */start* - Reinicializo la conversación
+     2. */help*  - Te muestro mis comandos
+     3. */link /share* - Te proporciono un link para que me muestres a mas personas 
+    - **Estadisticas**
+     4. */total* - Te muestro estadísticas a nivel mundial sobre los casos del coronavirus
+    - **Informacion**
+     5. */sintomas* - Te indico que sintomas tienen las personas que contraen el virus`
+    ctx.reply("Hola " + ctx.from.first_name + ", puedo ayudarte a saber mas del coronavirus (COVID 19)  😄🏥")
+    ctx.replyWithMarkdown(mensaje)
 })
 //Muestra los comandos disponibles 
 bot.help((ctx) => {
-    ctx.reply('Estos son mis comandos')
+    var mensaje = `***Mis comandos disponibles son:*** 
+    - **Basicos**
+    1. */start* - Reinicializo la conversación
+    2. */help*  - Te muestro mis comandos
+    3. */link /share* - Te proporciono un link para que me muestres a mas personas 
+    - **Estadisticas**
+    4. */total* - Te muestro estadísticas a nivel mundial sobre los casos del coronavirus
+    - **Informacion**
+    5. */sintomas* - Te indico que sintomas tienen las personas que contraen el virus`
+    ctx.replyWithMarkdown(mensaje)
+    ctx.reply('Recuerda que puedes preguntarme acerca del covid, Que es, como se propaga')
 })
 
 //Bot comparte su link 
