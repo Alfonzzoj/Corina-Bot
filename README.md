@@ -1,5 +1,5 @@
 <p>
-<img  src = "https://blush.design/api/download?shareUri=JOQvwDrbhPAvRMyg&c=Skin_0%7Effdbb4&bg=f95d8b&w=800&h=800&fm=png"  width = "300"  height = "300"  alt = "Coco19"  align="center" />
+<img  src = "https://blush.design/api/download?shareUri=JOQvwDrbhPAvRMyg&c=Skin_0%7Effdbb4&bg=f95d8b&w=800&h=800&fm=png"   alt = "Corina bot"  align="center" />
 </p>
 
 # Bot Cocovid 19 🥥😷
