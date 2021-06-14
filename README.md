@@ -45,7 +45,7 @@ _Como tener una copia del proyecto, para pruebas o desarrollo_
 
 1. Clonar el repositorio
 
-```bash
+```git
 
 git clone https://github.com/Alfonzzoj/Corina-Bot.git
 
@@ -54,11 +54,13 @@ git clone https://github.com/Alfonzzoj/Corina-Bot.git
 2. Instalar dependencias
 
 ```npm
+
 npm install 
 ```
 
 3. Ejecutar el bot 
 ```node
+
 node bot.js
 
 ```
