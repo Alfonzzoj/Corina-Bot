@@ -72,7 +72,7 @@ _Esto pusheara los cambios a heroku permitiendo actualizar el bot_
 
 ## Ejecutando las pruebas ⚙️
 
-_Puedes desarrollar pruebas o desarrollar nuevos componentes ejecutando el proyecto con _
+_Puedes desarrollar pruebas o crear nuevas funciones herramientas ejecutando el proyecto con:_
 ```npm
 npm run dev
 ```
