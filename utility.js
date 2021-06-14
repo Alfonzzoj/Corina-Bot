@@ -40,6 +40,17 @@ const Formatter2 = new Intl.NumberFormat("en-US", {
 function random(min, max) {
     return Math.floor((Math.random() * (max - min + 1)) + min);
 }
+/*
+*elimina los acentos del string
+*/
+const randomElementOfArray = (Arr) => {
+    var size = Arr.length
+    var indice = random(0, size - 1)
+    return Arr[indice]
+}
+/*
+*Verifica si el string es un comando
+*/
 function isCommand(respuesta) {
     if (respuesta.includes('/')) {
         console.log("Es un comando")
@@ -47,6 +58,24 @@ function isCommand(respuesta) {
     } else {
         return false
     }
-
 }
-module.exports = { toEscapeMSg, Formatter, Formatter2, random, isCommand };
+
+/*
+*elimina los acentos del string
+*/
+const removeAccents = (str) => {
+    return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+}
+/*
+*formatea el string a estructuras para recibir en el bot 
+*/
+const minix = (str) => {
+    return removeAccents(str).toLowerCase()
+}
+/*
+*bot recibe mensaje formateado y pregunta si lo incluye
+*/
+const escucharMsg = (str, phrase) => {
+    return minix(str).includes(phrase)
+}
+module.exports = { toEscapeMSg, Formatter, Formatter2, random, isCommand, removeAccents, randomElementOfArray, escucharMsg };

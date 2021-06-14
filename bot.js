@@ -4,23 +4,26 @@ const { initializeBotUtils } = require("./bot_utils");
 //Respuestas automaticas Answers
 var answers = require("./answers.js")
 //Servidor
-require("./server");
-require("dotenv").config();
+process.env.NTBA_FIX_319 = 1
+require("./server")
+require("dotenv").config()
 const token = process.env.BOT_TOKEN
 //Covid Api 
 var api = require("./api");
 
 // Instancia de bot 
-let bot = new TelegramBot(token, { polling: true });
+var bot = new TelegramBot(token, { polling: true });
 // bot.on("polling_error", console.log)
 //Inicialización de las utilidades del bot
 bot = initializeBotUtils(bot);
 
 
 //Funciones support
-const { toEscapeMSg, random, isCommand } = require('./utility')
+const { toEscapeMSg, escucharMsg, isCommand, randomElementOfArray } = require('./utility')
 
+// ================= T E S T I N G==============
 
+// 
 
 
 
@@ -29,13 +32,13 @@ const { toEscapeMSg, random, isCommand } = require('./utility')
 bot.onText(/\/start/, (msg) => {
     const chatId = msg.chat.id
     const name = msg.from.first_name
-    bot.sendMessage(chatId, `Hola ${name},Mi nombre es Corina(Coco), soy un Bot informativo.  puedo ayudarte a saber mas del coronavirus (COVID 19)  😄🏥 un gusto en saludarte!`)
+    bot.sendMessage(chatId, `Hola ${name}👋, mi nombre es Corina (Coco), soy un Bot informativo.  puedo ayudarte a saber mas del coronavirus (COVID 19) un gusto en saludarte!😄`)
 
     var mensaje = `*** Mis comandos disponibles son:***
 -  ***Basicos***
     1. */start* - Reinicializo la conversación
     2. */help*  - Te muestro mis comandos
-    3. */link /share* - Te proporciono un link para que me muestres a mas personas 
+    3. */link * - Te proporciono un link para que me muestres a mas personas 
 - ***Estadisticas***
     4. */total* - Te muestro estadísticas a nivel mundial sobre los casos del coronavirus
 - ***Informacion***
@@ -182,14 +185,82 @@ bot.on('message', (msg) => {
     let respuesta = msg.text
     const name = msg.from.first_name
     console.log(name + ": " + msg.text)
-    if (respuesta.toLowerCase().includes("hola")) {
-        bot.sendMessage(chatId, `Hola ${name} `)
-    } else if (respuesta.toLowerCase().includes("como estas")) {
-        bot.sendMessage(chatId, `¿ Muy bien y tu ? `)
-    } else if (respuesta.toLowerCase().includes("que puedes hacer")) {
+    /*El bot recibe el mensaje del usuario "respuesta"
+    *   1. elimna los acentos
+    *   2. lo trsnaforma a minusculas
+    *   3. verifica que diga lo que dice
+    */
+
+    //Decir hola
+    if (escucharMsg(respuesta, "hola")) {
+        bot.sendMessage(chatId, randomElementOfArray(answers.saludos).replace("first_name", name))
+
+        //Despedidas
+    } else if (escucharMsg(respuesta, "adios") || escucharMsg(respuesta, "chao") || escucharMsg(respuesta, "hasta luego")) {
+        bot.sendMessage(chatId, randomElementOfArray(answers.despedidas))
+
+    }
+    //como estas
+    else if (escucharMsg(respuesta, "que puedes hacer")) {
+        bot.sendMessage(chatId, randomElementOfArray(answers.comoEstas))
+
+        //Que puedes hacer
+    } else if (escucharMsg(respuesta, "que puedes hacer")) {
         help(chatId)
-    } else if (isCommand) {
-        console.log(answers.comoEstas)
+
+    }
+    //Si es comando
+    else if (isCommand(respuesta)) {
+        console.log("Comando: " + respuesta)
+    }
+    //Quien eres 
+    else if (escucharMsg(respuesta, "quien eres") || escucharMsg(respuesta, "que eres")) {
+        bot.sendMessage(chatId, "Mi nombre es Corina me apodan (Coco), soy un Bot informativo.  puedo ayudarte a saber mas del coronavirus (COVID 19) 👲")
+    }
+    //==============Otros == 
+    //Hora dormir
+    else if (escucharMsg(respuesta, "dencansas") || escucharMsg(respuesta, "duermes")) {
+        bot.sendMessage(chatId, "Suelo descansar de 12:30am a 6:30am , o cuando estoy en desarrollo 👀")
+    }
+    //Info covid 
+    else if (escucharMsg(respuesta, "covid")) {
+        bot.sendMessage(chatId, "Que quieres saber del covid ?(funcion en prubeas) 👀")
+    }
+    //=================Easter eggs============================
+    //Achu
+    else if (escucharMsg(respuesta, "gracias")) {
+        bot.sendMessage(chatId, "Espero haberte ayudado 😉")
+
+    }
+    //Achu
+    else if (escucharMsg(respuesta, "achu")) {
+        bot.sendMessage(chatId, "Salud " + name + " 😉")
+
+    }
+    //Coco
+    else if (escucharMsg(respuesta, "te llamas coco") || escucharMsg(respuesta, "te dicen coco") || escucharMsg(respuesta, "te llaman coco")) {
+        bot.sendMessage(chatId, "Fue mi primer nombre, y esta lindo 👼 ")
+
+    }
+    //Coco
+    else if (escucharMsg(respuesta, "coco")) {
+        bot.sendMessage(chatId, "Veo que conoces mi apodo 🧠 ")
+
+    }
+    //Goku
+    else if (escucharMsg(respuesta, "goku")) {
+        bot.sendMessage(chatId, "No hay dudas goku le gana ")
+
+    }
+    //Badbunny
+    else if (escucharMsg(respuesta, "badbunny") || escucharMsg(respuesta, "bad bunny")) {
+        bot.sendMessage(chatId, "Yeyeyee")
+
+    }
+
+    else {         //Es una respuesta que no entiendo
+        bot.sendMessage(chatId, randomElementOfArray(answers.defaults))
+
     }
 
 })
