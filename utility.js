@@ -36,4 +36,17 @@ const Formatter2 = new Intl.NumberFormat("en-US", {
     minimumFractionDigits: 2,
     maximumFractionDigits: 2,
 });
-module.exports = { toEscapeMSg, Formatter, Formatter2 };
+
+function random(min, max) {
+    return Math.floor((Math.random() * (max - min + 1)) + min);
+}
+function isCommand(respuesta) {
+    if (respuesta.includes('/')) {
+        console.log("Es un comando")
+        return true
+    } else {
+        return false
+    }
+
+}
+module.exports = { toEscapeMSg, Formatter, Formatter2, random, isCommand };

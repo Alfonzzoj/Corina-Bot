@@ -1,39 +1,25 @@
 //Import libreria Telegraf
 const TelegramBot = require("node-telegram-bot-api")
-
 const { initializeBotUtils } = require("./bot_utils");
-
+//Respuestas automaticas Answers
+var answers = require("./answers.js")
 //Servidor
 require("./server");
 require("dotenv").config();
 const token = process.env.BOT_TOKEN
-
 //Covid Api 
-//Api: https://rapidapi.com/es/Gramzivi/api/covid-19-data/
-const axios = require('axios');
-
-var options = {
-    method: 'GET',
-    url: 'https://covid-19-data.p.rapidapi.com/totals',
-    headers: {
-        'x-rapidapi-key': '3800c51dc0msh15078a490cf2229p129603jsn6fe630f17743',
-        'x-rapidapi-host': 'covid-19-data.p.rapidapi.com'
-    }
-};
+var api = require("./api");
 
 // Instancia de bot 
 let bot = new TelegramBot(token, { polling: true });
-
-
+// bot.on("polling_error", console.log)
 //Inicialización de las utilidades del bot
 bot = initializeBotUtils(bot);
 
 
 //Funciones support
-const { toEscapeMSg } = require('./utility')
-function random(min, max) {
-    return Math.floor((Math.random() * (max - min + 1)) + min);
-}
+const { toEscapeMSg, random, isCommand } = require('./utility')
+
 
 
 
@@ -173,7 +159,7 @@ bot.onText(/\/contagio/, (msg) => {
 bot.onText(/\/total/, (msg) => {
     const chatId = msg.chat.id
 
-    axios.request(options).then(function (response) {
+    axios.request(api.options).then(function (response) {
         // console.log(response.data);
         var fecha = new Date(response.data[0].lastUpdate);
         // console.log(fecha.toLocaleString("en-us"));
@@ -195,13 +181,15 @@ bot.on('message', (msg) => {
     const chatId = msg.chat.id;
     let respuesta = msg.text
     const name = msg.from.first_name
-    console.log(msg.text)
+    console.log(name + ": " + msg.text)
     if (respuesta.toLowerCase().includes("hola")) {
         bot.sendMessage(chatId, `Hola ${name} `)
     } else if (respuesta.toLowerCase().includes("como estas")) {
-        bot.sendMessage(chatId, `Muy bien y tu ? `)
+        bot.sendMessage(chatId, `¿ Muy bien y tu ? `)
     } else if (respuesta.toLowerCase().includes("que puedes hacer")) {
         help(chatId)
+    } else if (isCommand) {
+        console.log(answers.comoEstas)
     }
 
 })
