@@ -80,7 +80,21 @@ bot.onText(/\/help/, (msg) => {
     bot.sendMessage(chatId, toEscapeMSg(mensaje), { parse_mode: "MarkdownV2" });
 
 })
-
+function help(chatId) {
+    var mensaje = `*** Mis comandos disponibles son:***
+-  ***Basicos***
+    1. */start* - Reinicializo la conversación
+    2. */help*  - Te muestro mis comandos
+    3. */link* - Te proporciono un link para que me muestres a mas personas 
+- ***Estadisticas***
+    4. */total* - Te muestro estadísticas a nivel mundial sobre los casos del coronavirus
+- ***Informacion***
+    5. */sintomas* - Te indico que sintomas tienen las personas que contraen el virus
+    6. */cura*  - Te informo de el/los medicamentos que actualmente se utilizan para controlar el virus
+    7. */contagio* - Te indico que procedimiento seguir en caso de creer o saber que estas contagiado
+    `
+    bot.sendMessage(chatId, toEscapeMSg(mensaje), { parse_mode: "MarkdownV2" });
+}
 //Bot comparte su link 
 bot.onText(/\/link/, (msg) => {
     const chatId = msg.chat.id
@@ -178,15 +192,16 @@ bot.onText(/\/total/, (msg) => {
 // ==========================Bot hears ==============
 //Bot escucha conversacion hola
 bot.on('message', (msg) => {
-    const userId = msg.chat.id;
+    const chatId = msg.chat.id;
     let respuesta = msg.text
     const name = msg.from.first_name
     console.log(msg.text)
     if (respuesta.toLowerCase().includes("hola")) {
-        bot
-            .sendMessage(userId, `Hola ${name} `)
+        bot.sendMessage(chatId, `Hola ${name} `)
     } else if (respuesta.toLowerCase().includes("como estas")) {
-        bot.sendMessage(userId, `Muy bien y tu ? `)
+        bot.sendMessage(chatId, `Muy bien y tu ? `)
+    } else if (respuesta.toLowerCase().includes("que puedes hacer")) {
+        help(chatId)
     }
 
 })
