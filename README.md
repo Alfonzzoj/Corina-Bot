@@ -66,7 +66,6 @@ Para hacer deploy al proyecto se deben hacer push a git, y luego a heroku (hosti
 
 Se puede utilizar el siguiente comando:
 ```npm
-
 npm run deploy
 ```
 _Esto pusheara los cambios a heroku permitiendo actualizar el bot_
@@ -75,7 +74,6 @@ _Esto pusheara los cambios a heroku permitiendo actualizar el bot_
 
 _Puedes desarrollar pruebas o desarrollar nuevos componentes ejecutando el proyecto con _
 ```npm
-
 npm run dev
 ```
 
