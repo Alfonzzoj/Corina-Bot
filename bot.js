@@ -86,7 +86,7 @@ bot.command(['Total', 'total'], (ctx) => {
 
 // ==========================Bot hears ==============
 //Bot escucha las frases autosaludo
-bot.hears(['Hola coco', 'hola coco', 'HOLA COCO', 'hola', 'Hola'], ctx => {
+bot.hears(['Hola corina', 'hola corina', 'HOLA CORINA', 'hola', 'Hola'], ctx => {
 
     var saludos = ["Hola " + ctx.from.first_name + " 👋",
     "Que tal  " + ctx.from.first_name + " 😄",
@@ -95,6 +95,7 @@ bot.hears(['Hola coco', 'hola coco', 'HOLA COCO', 'hola', 'Hola'], ctx => {
 
     ctx.reply(saludos[random(0, saludos.length)])
 })
+
 // ==========================Bot recibe ==============
 //Si recibe un stickers
 bot.on('sticker', ctx => {

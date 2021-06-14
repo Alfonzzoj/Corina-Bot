@@ -69,4 +69,3 @@ _Aquellos que ayudaron a levantar el proyecto desde sus inicios_
 * **Oliver Torres** - *Programación*
 
 * **Pedro Duran** - *Programación*
-* ---------------------

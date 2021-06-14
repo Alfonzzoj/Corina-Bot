@@ -1,0 +1,8 @@
+Name: Corina Bot
+Description: Te ayudo a saber mas del covid 😄
+About: Soy un bot que pretende ayudarte con el virus Covid-19, desarrollado con Javascript Proyecto Ucab Guayana 2021
+Commands: start - Reinicializo la conversación
+          help  - Te muestro mis comandos
+          link  - Te proporciono un link para que me muestres a mas personas 
+          total - Te muestro estadísticas a nivel mundial sobre los casos del coronavirus
+          sintomas - Te indico que sintomas tienen las personas que contraen el virus
