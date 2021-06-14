@@ -51,14 +51,43 @@ git clone https://github.com/Alfonzzoj/Corina-Bot.git
 
 ```
 
-2. Ejecutar Node
+2. Instalar dependencias
 
+```npm
+npm install 
+```
+
+3. Ejecutar el bot 
 ```node
-
 node bot.js
 
 ```
+## Despliegue 📦
 
+_Agrega notas adicionales sobre como hacer deploy_
+
+Para hacer deploy al proyecto se deben hacer push a git, y luego a heroku (hosting elegido)
+
+Se puede utilizar el siguiente comando:
+```npm
+
+npm run deploy
+```
+_Esto pusheara los cambios a heroku permitiendo actualizar el bot_
+
+## Ejecutando las pruebas ⚙️
+
+_Puedes desarrollar pruebas o desarrollar nuevos componentes ejecutando el proyecto con _
+```npm
+
+npm run dev
+```
+
+Puedes ver el bot en telegram con http://t.me/Cocorina_bot
+
+# Detalles ⚠️
+
+No se es posible realizar pruebas o desarrollar con el bot desplegado en heroku, despues de todo no se pueden tener mas de 1 instancia de bot activa con el mismo token, se es necesario hacer stop del codigo en heroku.
 
 ## Autores ✒️
 
