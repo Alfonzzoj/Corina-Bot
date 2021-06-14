@@ -18,7 +18,7 @@ var options = {
 };
 
 // Instancia de bot 
-const bot = new Telegraf('1873090406:AAGRgjYpecA-n-xgDxN9gHnVuSnVCXGTKpg')
+const bot = new Telegraf(process.env.BOT_TOKEN)
 
 //Funciones support
 function random(min, max) {
