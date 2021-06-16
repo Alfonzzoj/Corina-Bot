@@ -219,7 +219,7 @@ bot.on('message', (msg) => {
     }
     //==============Otros == 
     //Hora dormir
-    else if (escucharMsg(respuesta, "dencansas") || escucharMsg(respuesta, "duermes")) {
+    else if (escucharMsg(respuesta, "descansas") || escucharMsg(respuesta, "duermes")) {
         bot.sendMessage(chatId, "Suelo descansar de 12:30am a 6:30am , o cuando estoy en desarrollo 👀")
     }
     //Info covid 
