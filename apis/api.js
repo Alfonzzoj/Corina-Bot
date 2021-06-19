@@ -1,5 +1,4 @@
 //Api: https://rapidapi.com/es/Gramzivi/api/covid-19-data/
-const axios = require('axios');
 
 var options = {
     method: 'GET',
@@ -11,6 +10,5 @@ var options = {
 };
 
 module.exports = {
-    axios,
     options
 }

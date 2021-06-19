@@ -1,33 +1,35 @@
-//Import libreria Telegraf
+//================================Imports librerias 
 const TelegramBot = require("node-telegram-bot-api")
-const { initializeBotUtils } = require("./bot_utils");
-//Respuestas automaticas Answers
-var answers = require("./answers.js")
-//Servidor
-process.env.NTBA_FIX_319 = 1
-require("./server")
+const { initializeBotUtils } = require("./helpers/bot_utils.js");
 require("dotenv").config()
-const token = process.env.BOT_TOKEN
-//Covid Api 
-var api = require("./api");
 
-// Instancia de bot 
+
+//================================Servidor
+process.env.NTBA_FIX_319 = 1
+require("./config/server.js")
+const token = process.env.BOT_TOKEN
+
+//================================Covid Api 
+const axios = require('axios');
+var api = require("./apis/api.js");
+
+//================================Respuestas automaticas Answers
+var answers = require("./chat/answers.js")
+
+//================================Instancia de bot 
 var bot = new TelegramBot(token, { polling: true });
-// bot.on("polling_error", console.log)
 //Inicialización de las utilidades del bot
 bot = initializeBotUtils(bot);
 
 
-//Funciones support
-const { toEscapeMSg, escucharMsg, isCommand, randomElementOfArray } = require('./utility')
+//================================Funciones support
+const { toEscapeMSg, escucharMsg, isCommand, randomElementOfArray } = require('./helpers/utility')
 
 // ================= T E S T I N G==============
 
-// 
+bot.on("polling_error", console.log)
 
-
-
-// =============C O M A N D O S =============
+// ================= C O M A N D O S =============
 //Comando de inicio saluda 
 bot.onText(/\/start/, (msg) => {
     const chatId = msg.chat.id
@@ -187,10 +189,10 @@ bot.on('message', (msg) => {
     console.log(name + ": " + msg.text)
     /*El bot recibe el mensaje del usuario "respuesta"
     *   1. elimna los acentos
-    *   2. lo trsnaforma a minusculas
+    *   2. lo transforma a minusculas
     *   3. verifica que diga lo que dice
     */
-
+    //==============Conversacion
     //Decir hola
     if (escucharMsg(respuesta, "hola")) {
         bot.sendMessage(chatId, randomElementOfArray(answers.saludos).replace("first_name", name))
@@ -217,21 +219,21 @@ bot.on('message', (msg) => {
     else if (escucharMsg(respuesta, "quien eres") || escucharMsg(respuesta, "que eres")) {
         bot.sendMessage(chatId, "Mi nombre es Corina me apodan (Coco), soy un Bot informativo.  puedo ayudarte a saber mas del coronavirus (COVID 19) 👲")
     }
+    else if (escucharMsg(respuesta, "gracias")) {
+        bot.sendMessage(chatId, "Espero haberte ayudado 😉")
+
+    }
     //==============Otros == 
     //Hora dormir
     else if (escucharMsg(respuesta, "descansas") || escucharMsg(respuesta, "duermes")) {
         bot.sendMessage(chatId, "Suelo descansar de 12:30am a 6:30am , o cuando estoy en desarrollo 👀")
     }
-    //Info covid 
+    //==============Info covid 
     else if (escucharMsg(respuesta, "covid")) {
         bot.sendMessage(chatId, "Que quieres saber del covid ?(funcion en prubeas) 👀")
     }
     //=================Easter eggs============================
     //Achu
-    else if (escucharMsg(respuesta, "gracias")) {
-        bot.sendMessage(chatId, "Espero haberte ayudado 😉")
-
-    }
     //Achu
     else if (escucharMsg(respuesta, "achu")) {
         bot.sendMessage(chatId, "Salud " + name + " 😉")
