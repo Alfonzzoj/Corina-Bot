@@ -50,7 +50,7 @@ bot.onText(/\/start/, (msg) => {
     7. */contagio* - Te indico que procedimiento seguir en caso de creer o saber que estas contagiado
     `
     // bot.sendMessage(chatId, { parse_mode: "Markdown" }, mensaje)
-    bot.sendMessage(chatId, toEscapeMSg(mensaje), { parse_mode: "MarkdownV2" });
+    bot.sendMessage(chatId, toEscapeMSg(mensaje), { parse_mode: "MarkdownV2" })
 
 })
 //Muestra los comandos disponibles
@@ -204,7 +204,6 @@ bot.on('message', (msg) => {
     // Despedidas (chao, adios)
     else if (escucharMsgArr(respuesta, requests.despedidas)) {
         bot.sendMessage(chatId, randomElementOfArray(answers.despedidas))
-
     }
     //Como estas
     else if (escucharMsgArr(respuesta, requests.comoEstas)) {
@@ -249,18 +248,64 @@ bot.on('message', (msg) => {
             bot.sendMessage(chatId, "El 31 de diciembre de 2019, la Organización Mundial de la Salud (OMS) recibió reportes de presencia de neumonía, de origen desconocido, en la ciudad de Wuhan, en China. Rápidamente, a principios de enero, las autoridades de este país identificaron la causa como una nueva cepa de coronavirus. La enfermedad ha ido expandiéndose hacia otros continentes como Asia, Europa y América.    ")
 
             bot.sendMessage(chatId, "En cuanto a su comienzo, todavía no se ha confirmado el posible origen animal de la COVID-19.")
+        }
+        //Contagio
+        else if (escucharMsg(respuesta, "transmite") || escucharMsg(respuesta, "contagia")) {
+            bot.sendMessage(chatId, "Si te refieres al corona virus, Hay casos confirmados de coronavirus en casi todo del mundo, incluyendo China, Europa (siendo en Italia y España los primeros focos), Irán, Estados Unidos, África, Australia y LATAM. La Organización Mundial de la Salud (OMS) y la Organización Panamericana de la Salud (OPS) han reconocido el estado de pandemia, que supone el desarrollo de esta enfermedad. Es por ello que los viajes se han visto restringidos y muchos países ha cerrado sus fronteras, para tratar de evitar su expansión.        ")
+        }
+        //Mas informacion del corona virus
+        else if (escucharMsgArr(respuesta, requests.moreInfo)) {
+            bot.sendMessage(chatId, "Esta información fue publicada por el equipo de Bupa de información sobre la salud, y está basada en fuentes acreditadas de evidencia médica. Ha sido sometida a revisión por  médicos de Bupa. Este contenido se presenta únicamente con fines de información general y no reemplaza la necesidad de consulta personal con un profesional de la salud calificado.\n\nAlgunos links de interes son. ")
 
+            var mensaje = `
+            - Organizacion Mundial de la salud (https://www.who.int/es/home)\n\n 
+- Consejos para la población acerca de los rumores sobre el nuevo coronavirus (https://www.who.int/es/emergencies/diseases/novel-coronavirus-2019/advice-for-public/myth-busters)
+            `
+            bot.sendMessage(chatId, toEscapeMSg(mensaje), { parse_mode: "MarkdownV2" })
 
         }
 
-        bot.sendMessage(chatId, "Que quieres saber del covid ?(funcion en prubeas) 👀")
     }
+    //Deteccion de sintomas 
+    else if (escucharMsg(respuesta, "sintoma")) {
+        if (escucharMsg(respuesta, "cuales son los sintoma")) {
+
+            var mensaje = `
+            *Los principales síntomas del virus coronavirus incluyen:*
+    - Síntomas respiratorios (similares a los de un resfriado)
+    - Fiebre (alta temperatura)
+    - Tos seca
+    - Falta de aliento o cansancio
+    - Dificultades respiratorias
+            `
+            bot.sendMessage(chatId, toEscapeMSg(mensaje), { parse_mode: "MarkdownV2" })
+            bot.sendMessage(chatId, "En casos más graves, el virus puede causar neumonía o síndrome respiratorio agudo grave (SRAS) que es una forma grave de neumonía, insuficiencia renal y hasta la muerte.")
+            bot.sendMessage(chatId, "En otros casos, algunas personas infectadas no desarrollan ningún síntoma, pero pueden contagiar igualmente al resto de población..")
+        }
+
+    }
+    //Contagio
+    else if (escucharMsg(respuesta, "transmite") || escucharMsg(respuesta, "contagia")) {
+        bot.sendMessage(chatId, "Si te refieres al corona virus, Hay casos confirmados de coronavirus en casi todo del mundo, incluyendo China, Europa (siendo en Italia y España los primeros focos), Irán, Estados Unidos, África, Australia y LATAM. La Organización Mundial de la Salud (OMS) y la Organización Panamericana de la Salud (OPS) han reconocido el estado de pandemia, que supone el desarrollo de esta enfermedad. Es por ello que los viajes se han visto restringidos y muchos países ha cerrado sus fronteras, para tratar de evitar su expansión.        ")
+    }
+    //A quien afecta mas
+    else if (escucharMsg(respuesta, "a quien afecta")) {
+        bot.sendMessage(chatId, "Hay casos confirmados de coronavirus en casi todo del mundo, incluyendo China, Europa (siendo en Italia y España los primeros focos), Irán, Estados Unidos, África, Australia y LATAM. La Organización Mundial de la Salud (OMS) y la Organización Panamericana de la Salud (OPS) han reconocido el estado de pandemia, que supone el desarrollo de esta enfermedad. Es por ello que los viajes se han visto restringidos y muchos países ha cerrado sus fronteras, para tratar de evitar su expansión.        ")
+    }
+    //Hora de ir al medico 
+    else if (escucharMsgArr(respuesta, requests.irMedic)) {
+        bot.sendMessage(chatId, "Si usted cree que ha estado expuesto al contacto con un afectado, quédese en casa practique el aislamiento social o cuarentena. Si desarrolla cualquiera de los síntomas relacionado con el coronavirus, o. es importante que busque atención médica tan pronto como sea posible. Consulte los números de teléfono habilitados en su país para recibir atención médica y controlar la evolución de los síntomas.")
+        bot.sendMessage(chatId, "Es importante que contacte a su médico antes de ir a consulta y le informe sobre si ha tenido un viaje reciente o ha estado en contacto con una persona afectada por el virus.")
+    }
+    //¿que es la cuarentena y por que tenemos que tenerla?
+    else if (escucharMsg(respuesta, "que es la cuarentena")) {
+        bot.sendMessage(chatId, "la cuarentena es la separación y restricción de movimientos impuesta a una persona que puede haber estado en contacto con una fuente de infección pero que no tiene síntomas. El objetivo de la cuarentena es lograr que, en el caso de que la persona se hubiera infectado, no transmita a su vez la infección a otros. La realización de cuarentena sólo tiene sentido para aquellas enfermedades que se pueden transmitir durante el periodo asintomático, es decir, antes de que la persona muestre síntomas de enfermedad. Sobre la base de la información que se maneja actualmente se ha establecido una cuarentena de 14 días.        ")
+    }
+
     //=================Easter eggs============================
-    //Achu
     //Achu
     else if (escucharMsg(respuesta, "achu")) {
         bot.sendMessage(chatId, "Salud " + name + " 😉")
-
     }
     //Porque te llaman Coco
     else if (escucharMsgArr(respuesta, requests.nameCoco)) {
