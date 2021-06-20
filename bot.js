@@ -14,7 +14,8 @@ const axios = require('axios');
 var api = require("./apis/api.js");
 
 //================================Respuestas automaticas Answers
-var answers = require("./chat/answers.js")
+var answers = require("./chat/answers")
+var requests = require("./chat/requests")
 
 //================================Instancia de bot 
 var bot = new TelegramBot(token, { polling: true });
@@ -23,7 +24,7 @@ bot = initializeBotUtils(bot);
 
 
 //================================Funciones support
-const { toEscapeMSg, escucharMsg, isCommand, randomElementOfArray } = require('./helpers/utility')
+const { toEscapeMSg, escucharMsg, isCommand, randomElementOfArray, escucharMsgArr } = require('./helpers/utility')
 
 // ================= T E S T I N G==============
 
@@ -192,44 +193,66 @@ bot.on('message', (msg) => {
     *   2. lo transforma a minusculas
     *   3. verifica que diga lo que dice
     */
+
     //==============Conversacion
     //Decir hola
     if (escucharMsg(respuesta, "hola")) {
         bot.sendMessage(chatId, randomElementOfArray(answers.saludos).replace("first_name", name))
 
         //Despedidas
-    } else if (escucharMsg(respuesta, "adios") || escucharMsg(respuesta, "chao") || escucharMsg(respuesta, "hasta luego")) {
+    }
+    // Despedidas (chao, adios)
+    else if (escucharMsgArr(respuesta, requests.despedidas)) {
         bot.sendMessage(chatId, randomElementOfArray(answers.despedidas))
 
     }
-    //como estas
-    else if (escucharMsg(respuesta, "como estas")) {
+    //Como estas
+    else if (escucharMsgArr(respuesta, requests.comoEstas)) {
         bot.sendMessage(chatId, randomElementOfArray(answers.comoEstas))
-
-        //Que puedes hacer
-    } else if (escucharMsg(respuesta, "que puedes hacer")) {
+    }
+    //Que puedes hacer
+    else if (escucharMsg(respuesta, "que puedes hacer")) {
         help(chatId)
-
     }
     //Si es comando
     else if (isCommand(respuesta)) {
         console.log("Comando: " + respuesta)
     }
     //Quien eres 
-    else if (escucharMsg(respuesta, "quien eres") || escucharMsg(respuesta, "que eres")) {
+    else if (escucharMsgArr(respuesta, requests.quienEres)) {
         bot.sendMessage(chatId, "Mi nombre es Corina me apodan (Coco), soy un Bot informativo.  puedo ayudarte a saber mas del coronavirus (COVID 19) 👲")
     }
     else if (escucharMsg(respuesta, "gracias")) {
         bot.sendMessage(chatId, "Espero haberte ayudado 😉")
-
     }
     //==============Otros == 
     //Hora dormir
-    else if (escucharMsg(respuesta, "descansas") || escucharMsg(respuesta, "duermes")) {
+    else if (escucharMsgArr(respuesta, requests.duermes)) {
         bot.sendMessage(chatId, "Suelo descansar de 12:30am a 6:30am , o cuando estoy en desarrollo 👀")
     }
+    //Estatus sistema
+    else if (escucharMsgArr(respuesta, requests.status)) {
+        bot.sendMessage(chatId, "sistemas y algoritmos funcionando correctamente 😎")
+    }
     //==============Info covid 
-    else if (escucharMsg(respuesta, "covid")) {
+    else if (escucharMsg(respuesta, "covid") || escucharMsg(respuesta, "corona")) {
+        //Que es covid
+        if (escucharMsgArr(respuesta, requests.whatCovid)) {
+            bot.sendMessage(chatId, "El coronavirus es un grupo de virus que causan enfermedades que van desde el resfriado común hasta enfermedades más graves como neumonía, síndrome respiratorio de Oriente Medio (MERS) y síndrome respiratorio agudo grave (SARS). Cabe destacar que la cepa de coronavirus (2019-nCoV) que ha causado el brote en China es nueva y no se conocía previamente.  ")
+        }
+        //Que ees covid-19
+        else if (escucharMsgArr(respuesta, requests.whatCovid19)) {
+            bot.sendMessage(chatId, "La COVID-19 es la enfermedad infecciosa causada por el coronavirus que se ha descubierto más recientemente. Ambos eran desconocidos antes de que estallara el brote en Wuhan (China) en diciembre de 2019.")
+        }
+        //historia del covid 
+        else if (escucharMsgArr(respuesta, requests.story)) {
+            bot.sendMessage(chatId, "El 31 de diciembre de 2019, la Organización Mundial de la Salud (OMS) recibió reportes de presencia de neumonía, de origen desconocido, en la ciudad de Wuhan, en China. Rápidamente, a principios de enero, las autoridades de este país identificaron la causa como una nueva cepa de coronavirus. La enfermedad ha ido expandiéndose hacia otros continentes como Asia, Europa y América.    ")
+
+            bot.sendMessage(chatId, "En cuanto a su comienzo, todavía no se ha confirmado el posible origen animal de la COVID-19.")
+
+
+        }
+
         bot.sendMessage(chatId, "Que quieres saber del covid ?(funcion en prubeas) 👀")
     }
     //=================Easter eggs============================
@@ -239,15 +262,13 @@ bot.on('message', (msg) => {
         bot.sendMessage(chatId, "Salud " + name + " 😉")
 
     }
-    //Coco
-    else if (escucharMsg(respuesta, "te llamas coco") || escucharMsg(respuesta, "te dicen coco") || escucharMsg(respuesta, "te llaman coco")) {
+    //Porque te llaman Coco
+    else if (escucharMsgArr(respuesta, requests.nameCoco)) {
         bot.sendMessage(chatId, "Fue mi primer nombre, y esta lindo 👼 ")
-
     }
     //Coco
     else if (escucharMsg(respuesta, "coco")) {
         bot.sendMessage(chatId, "Veo que conoces mi apodo 🧠 ")
-
     }
     //Goku
     else if (escucharMsg(respuesta, "goku")) {
@@ -255,16 +276,13 @@ bot.on('message', (msg) => {
 
     }
     //Badbunny
-    else if (escucharMsg(respuesta, "badbunny") || escucharMsg(respuesta, "bad bunny")) {
+    else if (escucharMsgArr(respuesta, requests.bb)) {
         bot.sendMessage(chatId, "Yeyeyee")
-
     }
-
+    //============== No conozco lo que me dices 
     else {         //Es una respuesta que no entiendo
         bot.sendMessage(chatId, randomElementOfArray(answers.defaults))
-
     }
-
 })
 
 

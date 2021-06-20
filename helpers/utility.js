@@ -78,4 +78,24 @@ const minix = (str) => {
 const escucharMsg = (str, phrase) => {
     return minix(str).includes(phrase)
 }
-module.exports = { toEscapeMSg, Formatter, Formatter2, random, isCommand, removeAccents, randomElementOfArray, escucharMsg };
+//EMR escucha mensajes pero en arreglo
+const escucharMsgArr = (str, phraseArr) => {
+    // Palabra del usuario formateada
+    var simplificada = minix(str)
+    var condicion = false
+    /*phrase : En este caso es el array con todas las posibles palabras que 
+    * permite el bot ejemplo requests.despedidas
+    * Siendo requests.despedidas = ["chao","adios","hasta luego"]
+    */
+    // console.log("str:" + simplificada)
+    // console.log("Arr:" + phraseArr)
+    phraseArr.forEach(palabra => {
+        // console.log(palabra)
+        if (simplificada.includes(palabra)) {
+            condicion = true
+            console.log("EMR:" + condicion + " con '" + palabra + "'")
+        }
+    })
+    return condicion
+}
+module.exports = { toEscapeMSg, Formatter, Formatter2, random, isCommand, removeAccents, randomElementOfArray, escucharMsg, escucharMsgArr };
