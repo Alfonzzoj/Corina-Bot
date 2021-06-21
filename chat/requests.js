@@ -1,7 +1,7 @@
 var despedidas = ["adios", "hasta luego", "chao"]
 var comoEstas = ["como estas", "como tas", "que tal", "como va todo", "como te va", "como va todo", "como andas", "que es de tu vida", "como va la cosa", "como va la vida", "que te cuentas", "que me cuentas", "que hay"]
 var status = ["como andamos", "todo en orden", "todo bien", "que hay de nuevo"]
-var quienEres = ["quien eres", "que eres"]
+var quienEres = ["quien eres", "que eres", "te llamas"]
 var duermes = ["descansas", "duermes", "tomas la siesta"]
 var nameCoco = ["te llamas coco", "te dicen coco", "te llaman coco"]
 var bb = ["badbunny", "bad bunny", "badbuny", "bad buny", "conejo malo"]
