@@ -240,7 +240,7 @@ bot.on('message', (msg) => {
     }
     //Estatus sistema
     else if (escucharMsgArr(respuesta, requests.status)) {
-        bot.sendMessage(chatId, "sistemas y algoritmos funcionando correctamente 😎")
+        bot.sendMessage(chatId, "Sistemas y algoritmos funcionando correctamente 😎")
     }
     //==============Info covid 
     else if (escucharMsg(respuesta, "covid") || escucharMsg(respuesta, "corona")) {
