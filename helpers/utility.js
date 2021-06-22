@@ -19,18 +19,13 @@ function toEscapeMSg(str) {
         .replace(/\(/g, "\\(")
         .replace(/\)/g, "\\)");
 }
-/**
- * Implementación de la API de internacionalización para formatear los precios de las acciones a dos dígitos en USD
- */
+
 const Formatter = new Intl.NumberFormat("en-US", {
     style: "currency",
     currency: "USD",
     minimumFractionDigits: 2,
 });
 
-/**
- * Implementación de la API de internacionalización para formatear los porcentajes a dos dígitos
- */
 const Formatter2 = new Intl.NumberFormat("en-US", {
     style: "percent",
     minimumFractionDigits: 2,
@@ -73,7 +68,7 @@ const minix = (str) => {
     return removeAccents(str).toLowerCase()
 }
 /*
-*bot recibe mensaje formateado y pregunta si lo incluye
+* bot recibe mensaje formateado y pregunta si lo incluye
 */
 const escucharMsg = (str, phrase) => {
     return minix(str).includes(phrase)

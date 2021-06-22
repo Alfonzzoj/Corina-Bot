@@ -18,7 +18,7 @@ var answers = require("./chat/answers")
 var requests = require("./chat/requests")
 
 //================================Instancia de bot 
-var bot = new TelegramBot(token, { polling: true });
+var bot = new TelegramBot(token, { polling: true })
 //Inicialización de las utilidades del bot
 bot = initializeBotUtils(bot);
 
@@ -118,6 +118,17 @@ bot.onText(/\/sintomas/, (msg) => {
 	- Dolor o presión en el pecho
 	- Incapacidad para hablar o moverse`
     bot.sendMessage(chatId, toEscapeMSg(mensaje), { parse_mode: "MarkdownV2" });
+})
+// Diagnostico
+bot.onText(/\/diagnostico/, (msg) => {
+    const chatId = msg.chat.id
+
+    bot.sendMessage(chatId, "¿Qué sintomas tienes? ", {
+        "reply_markup": {
+            "teclado": [["Texto de muestra", "Segunda muestra"], ["Teclado"], ["Soy un robot"]]
+        }
+    });
+
 })
 // //Explica los sintomas del covid
 bot.onText(/\/cura/, (msg) => {
@@ -389,7 +400,6 @@ bot.on('message', (msg) => {
             }
         }
     }
-
     //=================Easter eggs============================
     //Achu
     else if (escucharMsg(respuesta, "achu")) {
