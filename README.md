@@ -89,6 +89,6 @@ _Aquellos que ayudaron a levantar el proyecto desde sus inicios_
 
 * **Jesús Alfonzo** - *Programación* - [Alfonzzoj](https://github.com/Alfonzzoj)
 
-* **Oliver Torres** - *Programación*
+* **Oliver Torres** - *Programación* - [Otorres828](https://github.com/otorres828)
 
-* **Pedro Duran** - *Programación*
+* **Pedro Duran** - *Programación*   - [PedrinDurant](https://github.com/PedrinDurant)
