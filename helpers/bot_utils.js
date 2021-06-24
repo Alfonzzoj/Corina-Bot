@@ -31,9 +31,10 @@ const nextMessageHandler = (bot) => {
   };
   /**
    * Evento que captura todos los mensajes, en caso de ser un mensaje de respuesta que el bot espera,éste ejecuta el callback del mismo y continúa
-   * con su flujo de interacción
+   * con su flujo de interacción 
    *
    */
+
   bot.on("message", (msg) => {
     const chatId = msg.chat.id;
 

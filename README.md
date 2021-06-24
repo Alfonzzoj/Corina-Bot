@@ -91,4 +91,4 @@ _Aquellos que ayudaron a levantar el proyecto desde sus inicios_
 
 * **Oliver Torres** - *Programación* - [Otorres828](https://github.com/otorres828)
 
-* **Pedro Duran** - *Programación*   - [PedrinDurant](https://github.com/PedrinDurant)
+* **Pedro Duran**   - *Programación* - [PedrinDurant](https://github.com/PedrinDurant)

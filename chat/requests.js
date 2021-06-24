@@ -7,7 +7,7 @@ var nameCoco = ["te llamas coco", "te dicen coco", "te llaman coco"]
 var bb = ["badbunny", "bad bunny", "badbuny", "bad buny", "conejo malo"]
 
 //covid
-var whatCovid = ["que es covid", "que es el covid",]
+var whatCovid = ["que es covid", "que es el covid"]
 var whatCovid19 = ["que es covid19", "que es el covid19", "que es covid-19", "que es el covid-19"]
 var story = ["origen del corona", "origen de corona", "historia del corona", "historia de corona", "historia de covid", "historia del covid"]
 var sintomas = ["tos", "fiebre,tos", "cansancio", "poco apetito", "dificultades respiratorias", "problemas para respirar", "problemas de respiracion"]

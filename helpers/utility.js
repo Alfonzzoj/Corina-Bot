@@ -20,17 +20,17 @@ function toEscapeMSg(str) {
         .replace(/\)/g, "\\)");
 }
 
-const Formatter = new Intl.NumberFormat("en-US", {
-    style: "currency",
-    currency: "USD",
-    minimumFractionDigits: 2,
-});
+// const Formatter = new Intl.NumberFormat("en-US", {
+//     style: "currency",
+//     currency: "USD",
+//     minimumFractionDigits: 2,
+// });
 
-const Formatter2 = new Intl.NumberFormat("en-US", {
-    style: "percent",
-    minimumFractionDigits: 2,
-    maximumFractionDigits: 2,
-});
+// const Formatter2 = new Intl.NumberFormat("en-US", {
+//     style: "percent",
+//     minimumFractionDigits: 2,
+//     maximumFractionDigits: 2,
+// });
 
 function random(min, max) {
     return Math.floor((Math.random() * (max - min + 1)) + min);
@@ -73,6 +73,7 @@ const minix = (str) => {
 const escucharMsg = (str, phrase) => {
     return minix(str).includes(phrase)
 }
+
 //EMR escucha mensajes pero en arreglo
 const escucharMsgArr = (str, phraseArr) => {
     // Palabra del usuario formateada

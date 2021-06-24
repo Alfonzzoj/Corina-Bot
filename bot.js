@@ -10,8 +10,8 @@ require("./config/server.js")
 const token = process.env.BOT_TOKEN
 
 //================================Covid Api 
-const axios = require('axios');
-var api = require("./apis/api.js");
+const axios = require('axios')
+var api = require("./apis/api.js")
 
 //================================Respuestas automaticas Answers
 var answers = require("./chat/answers")
@@ -119,17 +119,17 @@ bot.onText(/\/sintomas/, (msg) => {
 	- Incapacidad para hablar o moverse`
     bot.sendMessage(chatId, toEscapeMSg(mensaje), { parse_mode: "MarkdownV2" });
 })
-// Diagnostico
-bot.onText(/\/diagnostico/, (msg) => {
-    const chatId = msg.chat.id
+// // Diagnostico
+// bot.onText(/\/diagnostico/, (msg) => {
+//     const chatId = msg.chat.id
 
-    bot.sendMessage(chatId, "¿Qué sintomas tienes? ", {
-        "reply_markup": {
-            "teclado": [["Texto de muestra", "Segunda muestra"], ["Teclado"], ["Soy un robot"]]
-        }
-    });
+//     bot.sendMessage(chatId, "¿Qué sintomas tienes? ", {
+//         "reply_markup": {
+//             "teclado": [["Texto de muestra", "Segunda muestra"], ["Teclado"], ["Soy un robot"]]
+//         }
+//     });
 
-})
+// })
 // //Explica los sintomas del covid
 bot.onText(/\/cura/, (msg) => {
     const chatId = msg.chat.id
@@ -209,8 +209,6 @@ bot.on('message', (msg) => {
     //Decir hola
     if (escucharMsg(respuesta, "hola")) {
         bot.sendMessage(chatId, randomElementOfArray(answers.saludos).replace("first_name", name))
-
-        //Despedidas
     }
     // Despedidas (chao, adios)
     else if (escucharMsgArr(respuesta, requests.despedidas)) {
