@@ -1,15 +1,14 @@
-<p>
-<img  src = "https://blush.design/api/download?shareUri=JOQvwDrbhPAvRMyg&c=Skin_0%7Effdbb4&bg=f95d8b&w=800&h=800&fm=png"   alt = "Corina bot" width="45%" align="center" />
-</p>
+# 🤖 Corina bot @Cocorina_bot 💬
 
-# Corina bot @Cocorina_bot 😷
+<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://blush.design/api/download?shareUri=JOQvwDrbhPAvRMyg&c=Skin_0%7Effdbb4&bg=f95d8b&w=800&h=800&fm=png" width="400" alt="Corina Bot"></a></p>
+
 
 Bot de Telegram llamado "Corina" desarrollado en Javascript con Node.js, creado con la finalidad de informar al público en general sobre el virus Covid-19. Como proyecto para la UCAB guayana catedra Interaccion Humano Computador (IHC)
   
 
-  <img  src = "https://blogthinkbig.com/wp-content/uploads/sites/4/2020/01/BotFather-Icon.jpg?resize=610%2C407"  width = "300"  height = "200"  alt = "Bot father" style="float: left;" />
+<p align="center"><a href="https://t.me/botfather" target="_blank"><img src="https://i.imgur.com/PD2yxjH.png" width="400" alt="Bot father"></a></p>
 
-  <img  src = "https://apps-cdn.athom.com/app/org.telegram.api.bot/1/1c9f8d07-be07-442d-933d-16fd212a68f1/assets/images/large.png"  width = "300"  height = "200"  alt = "Telegram" style="float: right;"  />
+  
 
 Utilizando BotFather , "El padre de los bots" es la solución que nos provee telegram para una integrar nuestro bot de manera sencilla, este nos provee de un token que nos permite manipular el bot, y otras configuraciones sencillas .
 
