@@ -1,5 +1,4 @@
 # 🤖 Corina bot @Cocorina_bot 💬
-![1](https://i.imgur.com/Gejwav1.jpg)
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://blush.design/api/download?shareUri=JOQvwDrbhPAvRMyg&c=Skin_0%7Effdbb4&bg=f95d8b&w=800&h=800&fm=png" width="400" alt="Corina Bot"></a></p>
 
 
